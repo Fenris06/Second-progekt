@@ -86,7 +86,7 @@ public class MonthlyReportManager {
 
     void printYearlyReportCheck(ArrayList<YearlyReportRecord> yearlyReport) {
         int monthName = 0;
-        ArrayList<Double> yearRecords = new ArrayList<>();
+        ArrayList<YearlyReportRecord> yearRecords = new ArrayList<>();
         for (MonthlyReport report : monthlyReports) {
             monthName = monthName + 1;
             double sumIncomes = 0;
@@ -100,12 +100,26 @@ public class MonthlyReportManager {
                 }
 
             }
-            yearRecords.add(sumIncomes);
-            yearRecords.add(sumExpenses);
+            yearRecords.add(new YearlyReportRecord(monthName, sumIncomes, false));
+            yearRecords.add(new YearlyReportRecord(monthName, sumExpenses, true));
+            for (int i = 0; i < yearlyReport.size(); i++) {
+                if (
+                        monthName != monthName
+                                || sumIncomes != sumIncomes
+                                || sumExpenses != sumExpenses
+                                || false != false
+                                || true != true
+                ) {
+                    System.out.println(monthName + "в этом месяце отсчеты не совпадают");
 
-        }
-        for (int i = 0; i < yearlyReport.size(); i++) {
 
+                } else {
+                    System.out.println("Операция успешно завершена");
+                    return;
+                }
+
+            }
         }
+
     }
 }
