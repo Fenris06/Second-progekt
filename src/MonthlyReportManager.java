@@ -84,7 +84,7 @@ public class MonthlyReportManager {
 
     }
 
-    void printYearlyReportCheck() {
+    void printYearlyReportCheck(ArrayList<YearlyReportRecord> yearlyReport) {
         int monthName = 0;
         ArrayList<Double> yearRecords = new ArrayList<>();
         for (MonthlyReport report : monthlyReports) {
@@ -102,6 +102,10 @@ public class MonthlyReportManager {
             }
             yearRecords.add(sumIncomes);
             yearRecords.add(sumExpenses);
+
+        }
+        for (int i = 0; i < yearlyReport.size(); i++) {
+
         }
     }
 }

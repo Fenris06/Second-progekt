@@ -93,5 +93,7 @@ public class YearlyReportManager {
             System.out.println("Средний расход за год составил:" + midlSumExpense);
         }
     }
-
+    ArrayList<YearlyReportRecord> getYearlyReport() {
+        return yearlyReport.yearRecords;
+    }
 }

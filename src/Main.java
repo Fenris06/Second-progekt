@@ -31,7 +31,7 @@ public class Main {
             } else if (command == 3) {
 
             } else if (command == 4) {
-                //monthlyReportManager.printMonthlyReport();
+                monthlyReportManager.printYearlyReportCheck(yearlyReportManager.getYearlyReport());
 
             } else if (command == 5) {
 
