@@ -43,20 +43,46 @@ public class MonthlyReportManager {
         }
     }
 
-//    void printMonthlyReport() {
-//        if (monthlyReports == null) {
-//            System.out.println("Список небыл загружен");
-//        } else {
-//
-//
-//            for (MonthlyReport report : monthlyReports) {
-//                for (MonthlyReportRecord record : report.records)
-//                    System.out.println( record.is_expense +
-//                            " " + record.item_name +
-//                            " " + record.quantity +
-//                            " " + record.sum_of_one);
-//            }
-//        }
-//    }
+    void printMonthlyReport() {
+        if (monthlyReports.isEmpty()) {
+            System.out.println("Список небыл загружен");
+        } else {
+            System.out.println("Статистика по месяцам");
+
+            int monthName = 0;
+            for (MonthlyReport report : monthlyReports) {
+                monthName = monthName + 1;
+                double maxSum = 0;
+                double minSum = 0;
+                String nameMax = "";
+                String nameMin = "";
+                double trueSum;
+                double falseSum;
+
+                for (MonthlyReportRecord record : report.records) {
+
+
+                    falseSum = record.quantity * record.sum_of_one;
+                    trueSum = record.quantity * record.sum_of_one;
+
+                    if (record.is_expense == false && maxSum < falseSum) {
+                        maxSum = falseSum;
+                        nameMax = record.item_name;
+                    }
+                    if (record.is_expense == true && minSum < trueSum) {
+                        minSum = trueSum;
+                        nameMin = record.item_name;
+                    }
+                }
+                System.out.println("Результаты за месяц " + monthName + ":");
+                System.out.println("Самый прибыльный товар в этом месяце. " + nameMax + " " + maxSum );
+                System.out.println("Самая большая трата в этом месяце. " + nameMin + " " + minSum);
+            }
+
+
+        }
+
+    }
+
 
 }
