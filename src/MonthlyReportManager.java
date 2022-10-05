@@ -75,7 +75,7 @@ public class MonthlyReportManager {
                     }
                 }
                 System.out.println("Результаты за месяц " + monthName + ":");
-                System.out.println("Самый прибыльный товар в этом месяце. " + nameMax + " " + maxSum );
+                System.out.println("Самый прибыльный товар в этом месяце. " + nameMax + " " + maxSum);
                 System.out.println("Самая большая трата в этом месяце. " + nameMin + " " + minSum);
             }
 
@@ -83,21 +83,25 @@ public class MonthlyReportManager {
         }
 
     }
+
     void printYearlyReportCheck() {
         int monthName = 0;
-        for (MonthlyReport report : monthlyReports){
+        ArrayList<Double> yearRecords = new ArrayList<>();
+        for (MonthlyReport report : monthlyReports) {
             monthName = monthName + 1;
             double sumIncomes = 0;
             double sumExpenses = 0;
             for (MonthlyReportRecord record : report.records) {
                 if (record.is_expense == false) {
                     sumIncomes += record.quantity * record.sum_of_one;
+
                 } else {
                     sumExpenses += record.quantity * record.sum_of_one;
                 }
-            }
 
+            }
+            yearRecords.add(sumIncomes);
+            yearRecords.add(sumExpenses);
         }
     }
-
 }
