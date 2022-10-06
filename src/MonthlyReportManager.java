@@ -85,44 +85,46 @@ public class MonthlyReportManager {
     }
 
     void printYearlyReportCheck(ArrayList<YearlyReportRecord> yearlyReport) {
-        int monthName = 0;
-        ArrayList<YearlyReportRecord> yearRecords = new ArrayList<>();
-        for (MonthlyReport report : monthlyReports) {
-            monthName = monthName + 1;
-            double sumIncomes = 0;
-            double sumExpenses = 0;
-            for (MonthlyReportRecord record : report.records) {
-                if (record.is_expense == false) {
-                    sumIncomes += record.quantity * record.sum_of_one;
+        if (monthlyReports.isEmpty() || yearlyReport == null ) {
+            System.out.println("Списки не были загружены");
+        } else {
+            int monthName = 0;
+            ArrayList<YearlyReportRecord> yearRecords = new ArrayList<>();
+            for (MonthlyReport report : monthlyReports) {
+                monthName = monthName + 1;
+                double sumIncomes = 0;
+                double sumExpenses = 0;
+                for (MonthlyReportRecord record : report.records) {
+                    if (record.is_expense == false) {
+                        sumIncomes += record.quantity * record.sum_of_one;
 
-                } else {
-                    sumExpenses += record.quantity * record.sum_of_one;
+                    } else {
+                        sumExpenses += record.quantity * record.sum_of_one;
+                    }
+
+                }
+                yearRecords.add(new YearlyReportRecord(monthName, sumIncomes, false));
+                yearRecords.add(new YearlyReportRecord(monthName, sumExpenses, true));
+
+
+            } boolean isSaxes = true;
+            for (int i = 0; i < yearlyReport.size(); i++) {
+                YearlyReportRecord record1 = yearRecords.get(i);
+                YearlyReportRecord record2 = yearlyReport.get(i);
+
+                if (
+                        record1.mouth != record2.mouth
+                                || record1.amount != record2.amount
+                                || record1.is_expense != record2.is_expense) {
+
+                    System.out.println("в " + monthName + " месяце отчеты не совпадают");
+                    isSaxes = false;
+
                 }
 
+            } if (isSaxes == true) {
+                System.out.println("Операция успешно завершена");
             }
-            yearRecords.add(new YearlyReportRecord(monthName, sumIncomes, false));
-            yearRecords.add(new YearlyReportRecord(monthName, sumExpenses, true));
-            // System.out.println(monthName + " " + sumIncomes + " " + sumExpenses);
-
-//            System.out.println("Операция успешно завершена");
-
-        } for (int i = 0; i < yearlyReport.size(); i++) {
-            YearlyReportRecord record1 = yearRecords.get(i);
-            YearlyReportRecord record2 = yearlyReport.get(i);
-
-            if (
-                    record1.mouth != record2.mouth
-                            || record1.amount != record2.amount
-                            || record1.is_expense != record2.is_expense)
-            {
-
-                System.out.println(monthName + " в этом месяце отчеты не совпадают");
-
-            }
-            System.out.println(record1.mouth + " " + record1.amount + " "  + record1.is_expense);
-            System.out.println(record2.mouth + " " + record2.amount + " "  + record2.is_expense);
         }
-
-
     }
 }
