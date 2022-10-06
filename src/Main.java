@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -16,10 +17,15 @@ public class Main {
             printMenu();
             int command = scanner.nextInt();
             if (command == 1){
+                ArrayList<String> fileName = new ArrayList<>();
+                fileName.add("resources/m.202101.csv");
+                fileName.add("resources/m.202102.csv");
+                fileName.add("resources/m.202103.csv");
+                monthlyReportManager.readMonthlyReport(fileName);
 
-                monthlyReportManager.readMonthlyReport("resources/m.202101.csv");
-                monthlyReportManager.readMonthlyReport("resources/m.202102.csv");
-                monthlyReportManager.readMonthlyReport("resources/m.202103.csv");
+//                monthlyReportManager.readMonthlyReport("resources/m.202101.csv");
+//                monthlyReportManager.readMonthlyReport("resources/m.202102.csv");
+//                monthlyReportManager.readMonthlyReport("resources/m.202103.csv");
 //
 
 

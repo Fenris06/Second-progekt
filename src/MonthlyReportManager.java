@@ -12,9 +12,12 @@ public class MonthlyReportManager {
         monthlyReports = new ArrayList<>();
     }
 
-    void readMonthlyReport(String nameFile) {
-        String content = readFileContentsOrNull(nameFile);
-        String[] lines = content.split("\r?\n");
+    void readMonthlyReport(ArrayList<String> fileName) {
+        for (String content : fileName) {
+            
+        }
+//        String content = readFileContentsOrNull(nameFile);
+//        String[] lines = content.split("\r?\n");
         ArrayList<MonthlyReportRecord> records = new ArrayList<>();
         for (int i = 1; i < lines.length; i++) {
             MonthlyReportRecord record = makeRecordFromLine(lines[i]);
