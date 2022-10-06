@@ -29,9 +29,9 @@ public class Main {
 //           System.out.println("Список был успешно считан");
 
             } else if (command == 3) {
-
-            } else if (command == 4) {
                 monthlyReportManager.printYearlyReportCheck(yearlyReportManager.getYearlyReport());
+            } else if (command == 4) {
+                monthlyReportManager.printMonthlyReport();
 
             } else if (command == 5) {
 
