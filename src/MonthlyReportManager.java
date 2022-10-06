@@ -13,18 +13,19 @@ public class MonthlyReportManager {
     }
 
     void readMonthlyReport(ArrayList<String> fileName) {
+       ArrayList<MonthlyReport> monthlyReports1 = new ArrayList<>();
         for (String content : fileName) {
-            
+             content = readFileContentsOrNull(fileName);
+            String[] lines = content.split("\r?\n");
+            ArrayList<MonthlyReportRecord> records = new ArrayList<>();
+            for (int i = 1; i < lines.length; i++) {
+                MonthlyReportRecord record = makeRecordFromLine(lines[i]);
+                records.add(record);
+            }
+            MonthlyReport monthlyReport = new MonthlyReport(records);
+            monthlyReports.add(monthlyReport);
         }
-//        String content = readFileContentsOrNull(nameFile);
-//        String[] lines = content.split("\r?\n");
-        ArrayList<MonthlyReportRecord> records = new ArrayList<>();
-        for (int i = 1; i < lines.length; i++) {
-            MonthlyReportRecord record = makeRecordFromLine(lines[i]);
-            records.add(record);
-        }
-        MonthlyReport monthlyReport = new MonthlyReport(records);
-        monthlyReports.add(monthlyReport);
+        
     }
 
 
