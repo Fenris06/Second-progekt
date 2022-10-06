@@ -102,26 +102,27 @@ public class MonthlyReportManager {
             }
             yearRecords.add(new YearlyReportRecord(monthName, sumIncomes, false));
             yearRecords.add(new YearlyReportRecord(monthName, sumExpenses, true));
+            // System.out.println(monthName + " " + sumIncomes + " " + sumExpenses);
 
-            for (int i = 0; i < yearlyReport.size(); i++) {
-                YearlyReportRecord record1 = yearRecords.get(i);
-                YearlyReportRecord record2 = yearlyReport.get(i);
+//            System.out.println("Операция успешно завершена");
 
-                if (
-                        record1.mouth != record2.mouth
-                                || record1.amount != record2.amount
-                                || record1.is_expense != record2.is_expense
-                ) {
-                    System.out.println(monthName + "в этом месяце отсчеты не совпадают");
+        } for (int i = 0; i < yearlyReport.size(); i++) {
+            YearlyReportRecord record1 = yearRecords.get(i);
+            YearlyReportRecord record2 = yearlyReport.get(i);
 
+            if (
+                    record1.mouth != record2.mouth
+                            || record1.amount != record2.amount
+                            || record1.is_expense != record2.is_expense)
+            {
 
-                }
-
+                System.out.println(monthName + " в этом месяце отчеты не совпадают");
 
             }
-            System.out.println("Операция успешно завершена");
-
+            System.out.println(record1.mouth + " " + record1.amount + " "  + record1.is_expense);
+            System.out.println(record2.mouth + " " + record2.amount + " "  + record2.is_expense);
         }
+
 
     }
 }
